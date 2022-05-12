@@ -1,7 +1,11 @@
 const canvas = document.querySelector("canvas");
 const ctx = canvas.getContext("2d");
-const img = new Image();
-img.src = '../images/road.png';
+
+const background = new Image();
+background.src = '../images/road.png';
+const car = new Image();
+car.src = "../images/car.png"
+
 
 
 window.onload = () => {
@@ -10,6 +14,7 @@ window.onload = () => {
   };
 
   function startGame() {
-    ctx.drawImage(img, 0, 0);
+    ctx.drawImage(background, 0, 0);
+    ctx.drawImage(car, 120, 330, 37, 75);
   }
 };
