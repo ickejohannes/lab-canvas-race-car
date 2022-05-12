@@ -11,19 +11,43 @@ const carInitialPosY = 330;
 let carPosX = carInitialPosX;
 let carPosY = carInitialPosY;
 
+let obstacleArray = [];
+
 
 window.onload = () => {
   document.getElementById('start-button').onclick = () => {
-    updateCanvas();
+    start();
   };
 };
+
+function start() {
+  setInterval(createObstacle, 2000);
+  updateCanvas();
+}
+
+class Obstacle {
+  constructor(xPos) {
+    this.obsXPos = xPos
+  };
+  obsYPos = 0;
+  obsHeight = 20;
+  obsWidth = 20;
+}
+
+function createObstacle() {
+  obstacleArray.push(new Obstacle(Math.random()*300));
+}
 
 
 function updateCanvas() {
   ctx.clearRect(0, 0, canvas.width, canvas.height)
   ctx.drawImage(background, 0, 0);
   ctx.drawImage(car, carPosX, carPosY, 37, 75);
-
+  
+  for (iterator = 0; iterator < obstacleArray.length; iterator += 1){
+    ctx.fillRect(obstacleArray[iterator].obsXPos, obstacleArray[iterator].obsYPos, obstacleArray[iterator].obsWidth, obstacleArray[iterator].obsHeight)
+  }
+  
   requestAnimationFrame(updateCanvas)
 }
 
