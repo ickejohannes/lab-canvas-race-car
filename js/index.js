@@ -40,12 +40,15 @@ function createObstacle() {
 
 
 function updateCanvas() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height)
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
   ctx.drawImage(background, 0, 0);
   ctx.drawImage(car, carPosX, carPosY, 37, 75);
   
+  
+  
   for (iterator = 0; iterator < obstacleArray.length; iterator += 1){
-    ctx.fillRect(obstacleArray[iterator].obsXPos, obstacleArray[iterator].obsYPos, obstacleArray[iterator].obsWidth, obstacleArray[iterator].obsHeight)
+    ctx.fillRect(obstacleArray[iterator].obsXPos, obstacleArray[iterator].obsYPos, obstacleArray[iterator].obsWidth, obstacleArray[iterator].obsHeight);
+    obstacleArray[iterator].obsYPos += 1;
   }
   
   requestAnimationFrame(updateCanvas)
